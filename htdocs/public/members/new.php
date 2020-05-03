@@ -665,10 +665,10 @@ print '<tr><td>'.$langs->trans("URLPhoto").'</td><td><input type="text" name="ph
 $tpl_context = 'public'; //BUG #11554 : define templae context to public
 include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_add.tpl.php';
 // Comments
-print '<tr>';
-print '<td class="tdtop">'.$langs->trans("Comments").'</td>';
-print '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('note_private', 'none'), 0, 1).'</textarea></td>';
-print '</tr>'."\n";
+//print '<tr>';
+//print '<td class="tdtop">'.$langs->trans("Comments").'</td>';
+//print '</tr>'."\n";
+//print '<td class="tdtop"><textarea name="note_private" id="note_private" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('note_private', 'none'), 0, 1).'</textarea></td>';
 
 // Add specific fields used by Dolibarr foundation for example
 if (!empty($conf->global->MEMBER_NEWFORM_DOLIBARRTURNOVER))
