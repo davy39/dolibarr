@@ -12,8 +12,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * or see http://www.gnu.org/
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * or see https://www.gnu.org/
  */
 
 /**
@@ -148,13 +148,13 @@ class MouvementStockTest extends PHPUnit\Framework\TestCase
 		// We create a product for tests
 		$warehouse1=new Entrepot($db);
 		$warehouse1->initAsSpecimen();
-		$warehouse1->libelle.=' 1';
+		$warehouse1->label.=' 1';
 		$warehouse1->description.=' 1';
 		$warehouse1id=$warehouse1->create($user);
 
 		$warehouse2=new Entrepot($db);
 		$warehouse2->initAsSpecimen();
-		$warehouse2->libelle.=' 2';
+		$warehouse2->label.=' 2';
 		$warehouse2->description.=' 2';
 		$warehouse2id=$warehouse2->create($user);
 

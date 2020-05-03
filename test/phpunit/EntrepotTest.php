@@ -12,8 +12,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * or see http://www.gnu.org/
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * or see https://www.gnu.org/
  */
 
 /**
@@ -139,7 +139,7 @@ class EntrepotTest extends PHPUnit\Framework\TestCase
     	$result=$localobject->create($user);
 
         print __METHOD__." result=".$result."\n";
-    	$this->assertLessThanOrEqual($result, 0);
+        $this->assertGreaterThan(0, $result);
 
     	return $result;
     }
@@ -241,25 +241,5 @@ class EntrepotTest extends PHPUnit\Framework\TestCase
     	$this->assertLessThan($result, 0, $localobject->errorsToString());
 
     	return $result;
-    }
-
-    /**
-     * testEntrepotStatic
-     *
-     * @return	void
-     */
-    public function testEntrepotStatic()
-    {
-        global $conf,$user,$langs,$db;
-        $conf=$this->savconf;
-        $user=$this->savuser;
-        $langs=$this->savlangs;
-        $db=$this->savdb;
-
-        $localobject=new Entrepot($db);
-
-        //$this->assertLessThan(1, 0);
-
-        return;
     }
 }

@@ -12,8 +12,8 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- * or see http://www.gnu.org/
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * or see https://www.gnu.org/
  */
 
 /**
@@ -140,7 +140,7 @@ class ActionCommTest extends PHPUnit\Framework\TestCase
         $localobject->type_code   = 'AC_OTH_AUTO';		// Type of event ('AC_OTH', 'AC_OTH_AUTO', 'AC_XXX'...)
         $localobject->code        = 'AC_PHPUNITTEST';
         $localobject->label       = 'This is a description';
-        $localobject->note        = 'This is note';
+        $localobject->note_private = 'This is note';
         $localobject->fk_project  = 0;
         $localobject->datep       = $now;
         $localobject->datef       = $now;
