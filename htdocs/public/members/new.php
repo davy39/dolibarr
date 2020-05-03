@@ -608,7 +608,7 @@ $arraygender = array('man'=>$langs->trans("Genderman"), 'woman'=>$langs->trans("
 print $form->selectarray('gender', $arraygender, GETPOST('gender') ?GETPOST('gender') : $object->gender, 1);
 print '</td></tr>';
 // Company
-print '<tr id="trcompany" class="trcompany"><td>'.$langs->trans("Company").'</td><td><input type="text" name="societe" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
+//print '<tr id="trcompany" class="trcompany"><td>'.$langs->trans("Company").'</td><td><input type="text" name="societe" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('societe')).'"></td></tr>'."\n";
 // Address
 print '<tr><td>'.$langs->trans("Address").'</td><td>'."\n";
 print '<textarea name="address" id="address" wrap="soft" class="quatrevingtpercent" rows="'.ROWS_3.'">'.dol_escape_htmltag(GETPOST('address', 'none'), 0, 1).'</textarea></td></tr>'."\n";
