@@ -592,7 +592,7 @@ else
 //else
 //{
 //    print $morphys[$conf->global->MEMBER_NEWFORM_FORCEMORPHY];
-//    print '<input type="hidden" id="morphy" name="morphy" value="'.$conf->global->MEMBER_NEWFORM_FORCEMORPHY.'">';
+  print '<input type="hidden" id="morphy" name="morphy" value="phy">';
 //}
 // Civility
 //print '<tr><td class="titlefield">'.$langs->trans('UserTitle').'</td><td>';
