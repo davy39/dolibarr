@@ -619,31 +619,31 @@ print ' / ';
 print $formcompany->select_ziptown(GETPOST('town'), 'town', array('zipcode', 'selectcountry_id', 'state_id'), 0, 1);
 print '</td></tr>';
 // Country
-print '<tr><td>'.$langs->trans('Country').'</td><td>';
-$country_id = GETPOST('country_id');
-if (!$country_id && !empty($conf->global->MEMBER_NEWFORM_FORCECOUNTRYCODE)) $country_id = getCountry($conf->global->MEMBER_NEWFORM_FORCECOUNTRYCODE, 2, $db, $langs);
-if (!$country_id && !empty($conf->geoipmaxmind->enabled))
-{
-    $country_code = dol_user_country();
+//print '<tr><td>'.$langs->trans('Country').'</td><td>';
+//$country_id = GETPOST('country_id');
+//if (!$country_id && !empty($conf->geoipmaxmind->enabled))
+//if (!$country_id && !empty($conf->global->MEMBER_NEWFORM_FORCECOUNTRYCODE)) $country_id = getCountry($conf->global->MEMBER_NEWFORM_FORCECOUNTRYCODE, 2, $db, $langs);
+//{
     //print $country_code;
-    if ($country_code)
-    {
-        $new_country_id = getCountry($country_code, 3, $db, $langs);
-        //print 'xxx'.$country_code.' - '.$new_country_id;
-        if ($new_country_id) $country_id = $new_country_id;
-    }
-}
-$country_code = getCountry($country_id, 2, $db, $langs);
-print $form->select_country($country_id, 'country_id');
-print '</td></tr>';
+    //    $country_code = dol_user_country();
+//    if ($country_code)
+//    {
+//        $new_country_id = getCountry($country_code, 3, $db, $langs);
+//        //print 'xxx'.$country_code.' - '.$new_country_id;
+//        if ($new_country_id) $country_id = $new_country_id;
+//    }
+//}
+//$country_code = getCountry($country_id, 2, $db, $langs);
+//print '</td></tr>';
+//print $form->select_country($country_id, 'country_id');
 // State
-if (empty($conf->global->SOCIETE_DISABLE_STATE))
-{
-    print '<tr><td>'.$langs->trans('State').'</td><td>';
-    if ($country_code) print $formcompany->select_state(GETPOST("state_id"), $country_code);
-    else print '';
-    print '</td></tr>';
-}
+//if (empty($conf->global->SOCIETE_DISABLE_STATE))
+//{
+//    print '<tr><td>'.$langs->trans('State').'</td><td>';
+//    if ($country_code) print $formcompany->select_state(GETPOST("state_id"), $country_code);
+//    else print '';
+//    print '</td></tr>';
+//}
 // EMail
 print '<tr><td>'.$langs->trans("Email").' <FONT COLOR="red">*</FONT></td><td><input type="text" name="email" maxlength="255" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('email')).'"></td></tr>'."\n";
 // Login
