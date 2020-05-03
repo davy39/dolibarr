@@ -581,19 +581,19 @@ else
     print '<input type="hidden" id="type" name="type" value="'.$conf->global->MEMBER_NEWFORM_FORCETYPE.'">';
 }
 // Moral/Physic attribute
-$morphys["phy"] = $langs->trans("Physical");
-$morphys["mor"] = $langs->trans("Moral");
-if (empty($conf->global->MEMBER_NEWFORM_FORCEMORPHY))
-{
-    print '<tr class="morphy"><td class="titlefield">'.$langs->trans('MemberNature').' <FONT COLOR="red">*</FONT></td><td>'."\n";
-    print $form->selectarray("morphy", $morphys, GETPOST('morphy'), 1);
-    print '</td></tr>'."\n";
-}
-else
-{
-    print $morphys[$conf->global->MEMBER_NEWFORM_FORCEMORPHY];
-    print '<input type="hidden" id="morphy" name="morphy" value="'.$conf->global->MEMBER_NEWFORM_FORCEMORPHY.'">';
-}
+//$morphys["phy"] = $langs->trans("Physical");
+//$morphys["mor"] = $langs->trans("Moral");
+//if (empty($conf->global->MEMBER_NEWFORM_FORCEMORPHY))
+//{
+//    print '<tr class="morphy"><td class="titlefield">'.$langs->trans('MemberNature').' <FONT COLOR="red">*</FONT></td><td>'."\n";
+//    print $form->selectarray("morphy", $morphys, GETPOST('morphy'), 1);
+//    print '</td></tr>'."\n";
+//}
+//else
+//{
+//    print $morphys[$conf->global->MEMBER_NEWFORM_FORCEMORPHY];
+//    print '<input type="hidden" id="morphy" name="morphy" value="'.$conf->global->MEMBER_NEWFORM_FORCEMORPHY.'">';
+//}
 // Civility
 print '<tr><td class="titlefield">'.$langs->trans('UserTitle').'</td><td>';
 print $formcompany->select_civility(GETPOST('civility_id'), 'civility_id').'</td></tr>'."\n";
