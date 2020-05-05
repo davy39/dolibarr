@@ -265,7 +265,67 @@ if ($action == 'add')
             $adh->login       = $_POST["login"];
             $adh->pass        = $_POST["pass1"];
         }
-        $adh->photo       = $_POST["photo"];
+        //$adh->photo       = $_POST["photo"];
+        if (!empty($_FILES['photo']['name'])) $adh->photo = dol_sanitizeFileName($_FILES['photo']['name']);
+        // Logo/Photo save
+        $dir = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos';
+        $file_OK = is_uploaded_file($_FILES['photo']['tmp_name']);
+        if ($file_OK)
+        {
+          if (GETPOST('deletephoto'))
+          {
+            require_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
+            $fileimg = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos/'.$object->photo;
+            $dirthumbs = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos/thumbs';
+            dol_delete_file($fileimg);
+            dol_delete_dir_recursive($dirthumbs);
+          }
+
+          if (image_format_supported($_FILES['photo']['name']) > 0)
+          {
+            dol_mkdir($dir);
+
+            if (@is_dir($dir))
+            {
+              $newfile = $dir.'/'.dol_sanitizeFileName($_FILES['photo']['name']);
+              if (!dol_move_uploaded_file($_FILES['photo']['tmp_name'], $newfile, 1, 0, $_FILES['photo']['error']) > 0)
+              {
+                setEventMessages($langs->trans("ErrorFailedToSaveFile"), null, 'errors');
+              }
+              else
+              {
+                  // Create thumbs
+                  $object->addThumbs($newfile);
+              }
+            }
+          }
+          else
+          {
+            setEventMessages("ErrorBadImageFormat", null, 'errors');
+          }
+        }
+        else
+        {
+          switch ($_FILES['photo']['error'])
+          {
+            case 1: //uploaded file exceeds the upload_max_filesize directive in php.ini
+            case 2: //uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form
+              $errors[] = "ErrorFileSizeTooLarge";
+              break;
+            case 3: //uploaded file was only partially uploaded
+              $errors[] = "ErrorFilePartiallyUploaded";
+              break;
+          }
+        }
+
+
+
+
+
+
+
+
+
         $adh->country_id  = $_POST["country_id"];
         $adh->state_id    = $_POST["state_id"];
         $adh->typeid      = $_POST["type"];
