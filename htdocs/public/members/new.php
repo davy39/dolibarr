@@ -49,6 +49,7 @@ if (is_numeric($entity)) define("DOLENTITY", $entity);
 
 require '../../main.inc.php';
 require_once DOL_DOCUMENT_ROOT.'/core/lib/company.lib.php';
+require_once DOL_DOCUMENT_ROOT.'/core/lib/images.lib.php';
 require_once DOL_DOCUMENT_ROOT.'/adherents/class/adherent.class.php';
 require_once DOL_DOCUMENT_ROOT.'/adherents/class/adherent_type.class.php';
 require_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
@@ -266,21 +267,15 @@ if ($action == 'add')
             $adh->pass        = $_POST["pass1"];
         }
         //$adh->photo       = $_POST["photo"];
-        if (!empty($_FILES['photo']['name'])) $adh->photo = dol_sanitizeFileName($_FILES['photo']['name']);
+        if (!empty($_FILES['photo']['name']))
+        {
+        $adh->photo = dol_sanitizeFileName($_FILES['photo']['name']);
+        }
         // Logo/Photo save
         $dir = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos';
         $file_OK = is_uploaded_file($_FILES['photo']['tmp_name']);
         if ($file_OK)
         {
-          if (GETPOST('deletephoto'))
-          {
-            require_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
-            $fileimg = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos/'.$object->photo;
-            $dirthumbs = $conf->adherent->dir_output.'/'.get_exdir(0, 0, 0, 1, $object, 'member').'/photos/thumbs';
-            dol_delete_file($fileimg);
-            dol_delete_dir_recursive($dirthumbs);
-          }
-
           if (image_format_supported($_FILES['photo']['name']) > 0)
           {
             dol_mkdir($dir);
@@ -317,14 +312,6 @@ if ($action == 'add')
               break;
           }
         }
-
-
-
-
-
-
-
-
 
         $adh->country_id  = $_POST["country_id"];
         $adh->state_id    = $_POST["state_id"];
