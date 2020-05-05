@@ -660,7 +660,7 @@ print '</td></tr>'."\n";
 // Photo
 //print '<tr><td>'.$langs->trans("URLPhoto").'</td><td><input type="text" name="photo" class="minwidth150" value="'.dol_escape_htmltag(GETPOST('photo')).'"></td></tr>'."\n";
 print '<tr><td>'.$langs->trans("Photo").'</td>';
-print '<tr><td><input type="file" class="flat" name="photo" id="photoinput"></td></tr>';
+print '<td><input type="file" class="flat" name="photo" id="photoinput"></td></tr>';
 // Public
 //print '<tr><td>'.$langs->trans("Public").'</td><td><input type="checkbox" name="public"></td></tr>'."\n";
 // Other attributes
